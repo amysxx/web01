@@ -10,4 +10,6 @@ import bean.User;
 public interface UserService {
     //注册用户
     int register(User user);
+
+    User login(String username, String password);
 }

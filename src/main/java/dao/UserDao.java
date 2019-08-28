@@ -10,4 +10,5 @@ public interface UserDao {
     //添加学生
     int add(User user) ;
 
+    User login(String username, String password);
 }
