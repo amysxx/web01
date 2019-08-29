@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>添加学生</title>
+</head>
+<body>
+<form action="StudentServlet" method="post">
+    <input type="hidden" name="fun" value="add" />
+    name:<input type="text" name="name"/><br/>
+    age:<input type="text" name="age"/><br/>
+    birthday:<input type="text" name="birthday" /><br/>
+    course:  <input type="checkbox" name="course" value="数学" />数学
+             <input type="checkbox" name="course" value="语文" />语文
+             <input type="checkbox" name="course" value="英语" />英语<br/>
+             <input type="submit" value="add"/>
+
+</form>
+</body>
+</html>
