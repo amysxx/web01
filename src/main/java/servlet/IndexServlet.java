@@ -23,6 +23,7 @@ public class IndexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //乱码第一种解决
         request.setCharacterEncoding ("UTF-8");
+
         String username = request.getParameter ("username");
         //乱码第二种解决  username = new String(username.getBytes (("ISO_8859_1")),"UTF-8");
         //乱码 第三种解决   <Connector URIEncoding="UTF-8" connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443" />
@@ -40,7 +41,11 @@ public class IndexServlet extends HttpServlet {
         UserService userService = new UserServiceImpl ( );
         int result = userService.register (user);
         if (result > 0) {
-            System.out.println (user.toString () );
+            System.out.println (username );
+            System.out.println (password );
+            System.out.println (sex );
+            System.out.println (age );
+
             System.out.println ("注册成功");
 
 
