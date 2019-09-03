@@ -16,6 +16,17 @@ public class Student {
     private Date birthday;
     private String[] course;
 
+    public Student() {
+    }
+
+    public Student(int id, String name, int age, Date birthday, String[] course) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.birthday = birthday;
+        this.course = course;
+    }
+
     public int getId() {
         return id;
     }

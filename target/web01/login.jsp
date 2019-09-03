@@ -24,7 +24,8 @@
 </script>
 </html>
 <body>
-<form action="loginServlet" method="post">
+<form action="StudentServlet" method="post">
+    <input type="hidden" name="fun" value="findAll"/>
     用户名:<input type="text" name="username"/><br/>
     密码:<input type="password" name="password"/><br/>
     验证码:<input type="text" /><img src="CheckCodeServlet" id="checkImage" /><a href="javascript:changeImage()">看不清，换一张</a><br/>

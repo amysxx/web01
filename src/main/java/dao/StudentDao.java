@@ -12,4 +12,10 @@ public interface StudentDao {
     int add(Student student);
 
     List<Student> findAllStudent();
+
+    int delete(int id);
+
+    Student query(int id);
+
+    int update(Student stu,int id);
 }

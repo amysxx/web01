@@ -12,4 +12,10 @@ public interface StudentService {
     int add(Student student);
 
     List<Student> getAllStudent();
+
+    int delete(int id);
+
+    Student query(int id);
+
+    int update(Student stu,int id);
 }

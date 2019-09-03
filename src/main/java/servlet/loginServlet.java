@@ -36,7 +36,7 @@ public class loginServlet extends HttpServlet {
 
             this.getServletContext ().setAttribute ("num", ++num);
 
-            response.sendRedirect ("showServlet");
+            response.sendRedirect ("ShowStudentServlet");
         }
     }
 

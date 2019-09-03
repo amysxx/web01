@@ -23,4 +23,19 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> getAllStudent() {
         return studentDao.findAllStudent();
     }
+
+    @Override
+    public int delete(int id) {
+        return studentDao.delete(id);
+    }
+
+    @Override
+    public Student query(int id) {
+        return studentDao.query(id);
+    }
+
+    @Override
+    public int update(Student stu, int id) {
+        return studentDao.update (stu,id);
+    }
 }

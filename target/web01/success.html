@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:http="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>成功页面</title>
+    <script>
+        function goback() {
+            window.history.back();
+        }
+        //4.只是用来定时,没有刷新
+/*
+        function go(){
+            window.history.go(-1);
+        }
+        setTimeout("go()",3000);
+*/
+    </script>
 </head>
 <body>
-    <h1>添加成功</h1>
+    <h1>成功</h1>
+    <input type="button" value="Back" onclick="goback()"/>
+    <!-- 1.a标签-->
+    <a href="javascript:history.back(-1);">back返回上一页</a>
+    <a href="javascript:"; onclick="history.go(-1)">go返回上一页</a>
+    <!-- 2.按钮-->
+    <input type="button" name="Submit" οnclick="javascript:history.back(-1);" value="返回上一页">
+    <!-- 3.图片-->
+    <a href="javascript :;" onClick="javascript :history.back(-1);"><img src="图片路径" border="0" title="返回上一页"></a>
+
+    <!-- 返回上一页面刷新-->
+    <a href="javascript:self.location=document.referrer">返回上一页</a>
+
+
+
 </body>
 </html>

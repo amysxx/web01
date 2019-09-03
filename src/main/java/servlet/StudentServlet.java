@@ -35,9 +35,14 @@ public class StudentServlet extends HttpServlet {
 
         if("add".equals(fun)){
             add(request,response);
-        }
-        if("findAll".equals(fun)){
+        }if("findAll".equals(fun)){
             findAll(request,response);
+        }else if("delete".equals (fun)) {
+            delete (request, response);
+        }else if("query".equals (fun)){
+            query (request,response);
+        }else if("update".equals (fun)){
+            update (request,response);
         }
     }
 
@@ -141,4 +146,61 @@ public class StudentServlet extends HttpServlet {
          * */
 
     }
+
+    protected void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id =Integer.parseInt (request.getParameter ("id"));
+        StudentService studentService = new StudentServiceImpl ();
+        int result = studentService.delete(id);
+        if(result!=0){
+            System.out.println ( "删除成功");
+            request.getRequestDispatcher ("success.html").forward (request,response);
+        }else{
+            System.out.println ("删除失败" );
+            request.getRequestDispatcher ("fail.html").forward (request,response);
+        }
+    }
+
+    protected void query(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id =Integer.parseInt (request.getParameter ("id"));
+        System.out.println (id );
+        StudentService studentService = new StudentServiceImpl ();
+        Student stu = studentService.query(id);
+        request.setAttribute ("stu",stu);
+        if(stu!=null){
+            request.getRequestDispatcher ("updatestudent.jsp").forward (request,response);
+        }else{
+            System.out.println (stu.toString () );
+            request.getRequestDispatcher ("fail.html").forward (request,response);
+        }
+    }
+
+    protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        Map<String,String[]> map = request.getParameterMap();
+        Student stu = new Student ();
+        DateConverter converter = new DateConverter ();
+        converter.setPatterns (new String[]{"yyyy-MM-dd","yyyy-MM-dd hh:mm:ss"});
+        ConvertUtils.register (converter,Date.class);
+
+        try {
+
+            BeanUtils.populate(stu,map);
+            System.out.println (stu.toString () );
+            StudentService studentService = new StudentServiceImpl ();
+            int result = studentService.update(stu,stu.getId ());
+            if(result != 0){
+
+                response.sendRedirect (request.getContextPath ()+"/StudentServlet?fun=findAll");
+            }else {
+                response.sendRedirect ("fail.html");
+            }
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace ( );
+        } catch (InvocationTargetException e) {
+            e.printStackTrace ( );
+        }
+
+    }
+
 }
