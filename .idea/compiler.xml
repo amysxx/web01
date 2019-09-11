@@ -6,8 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="web01" />
+        <module name="Day0909" />
+        <module name="Day0904" />
+        <module name="Day0903" />
+        <module name="Day0902" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Day0909" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

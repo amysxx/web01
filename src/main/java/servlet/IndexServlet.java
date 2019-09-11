@@ -5,7 +5,6 @@ import bean.User;
 import service.UserService;
 import service.impl.UserServiceImpl;
 
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,10 +21,9 @@ import java.io.IOException;
 public class IndexServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         //获取ServletContext(接口) 的对象
         ServletContext sc = this.getServletContext();
-        String contextPath = sc.getContextPath(); // 获得项目名(确切的说不是项目名，而是项目的访问名)
+        String contextPath = sc.getServletContextName (); // 获得项目名(确切的说不是项目名，而是项目的访问名)
         System.out.println(contextPath);
 
         //乱码第一种解决

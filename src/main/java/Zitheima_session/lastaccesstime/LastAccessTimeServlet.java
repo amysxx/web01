@@ -7,19 +7,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 @WebServlet("/LastAccessTimeServlet")
 public class LastAccessTimeServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	@Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		//获得当前时间
-		Date date = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		String currentTime = URLEncoder.encode (format.format(date),"UTF-8");
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime time = LocalDateTime.now();
+        String localTime = df.format(time);
+        System.out.println (localTime );
+		String currentTime = URLEncoder.encode (localTime,"UTF-8");
 		
 		//1、创建Cookie 记录当前的最新的访问时间
 		Cookie cookie = new Cookie("lastAccessTime",currentTime);
@@ -41,12 +45,13 @@ public class LastAccessTimeServlet extends HttpServlet {
 		if(lastAccessTime==null){
 			response.getWriter().write("您是第一次访问");
 		}else{
-			response.getWriter().write("您上次的访问的时间是："+lastAccessTime);
+			response.getWriter().write("您上次的访问的时间是："+ URLDecoder.decode (lastAccessTime,"UTF-8"));
 		}
 		
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	@Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
 	}

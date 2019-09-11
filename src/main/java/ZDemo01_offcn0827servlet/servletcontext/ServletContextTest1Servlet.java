@@ -31,7 +31,7 @@ public class ServletContextTest1Servlet extends HttpServlet {
 		String serverInfo = sc.getServerInfo();  //获取服务器信息
 		System.out.println(serverInfo);
 		
-		String contextPath = sc.getContextPath(); // 获得项目名(确切的说不是项目名，而是项目的访问名)
+		String contextPath = sc.getContextPath (); // 获得项目名(确切的说不是项目名，而是项目的访问名)
 		System.out.println(contextPath);
 		
 		String initParam = sc.getInitParameter("pname");// 获取全局初始化参数

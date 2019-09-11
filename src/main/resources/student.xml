@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<students><!-- 根节点-->
+	<student number="01">
+	<id>1</id>
+	<name>张三</name>
+	<age>20</age>
+	</student> 
+	<student number="02">
+	<id>2</id>
+	<name>李四</name>
+	<age>25</age>
+	</student> 
+</students>
