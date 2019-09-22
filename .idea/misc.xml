@@ -16,6 +16,14 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/Day0909/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0910/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0910_mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0917_spirng07_web/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0917_spring07/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0917_spring07_web/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/spring02_anno-ioc/pom.xml" />
       </set>
     </option>
   </component>
