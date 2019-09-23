@@ -16,6 +16,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/Day0909/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring0916_spring03/pom.xml" />
       </set>
     </option>
   </component>
