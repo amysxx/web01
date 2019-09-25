@@ -61,6 +61,7 @@
         <module>Day0917_spring07_web</module>
         <module>Day0917_spring08</module>
         <module>Day0917_spring09</module>
+        <module>SpringMvc_day01_01_start</module>
 
 
     </modules>
@@ -238,6 +239,17 @@
             <artifactId>spring-test</artifactId>
             <version>5.1.9.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.1.9.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.1.9.RELEASE</version>
+        </dependency>
+
 
 
         <!--mybatis-generator-maven-plugin -->

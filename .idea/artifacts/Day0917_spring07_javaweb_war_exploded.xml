@@ -7,6 +7,10 @@
         <element id="directory" name="classes">
           <element id="module-output" name="Day0917_spring07_javaweb" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.9.4" />
+        </element>
       </element>
     </root>
   </artifact>

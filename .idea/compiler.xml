@@ -8,20 +8,22 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Mybatis02_jndi" />
+        <module name="Day0916_spring03" />
         <module name="Day0917_spring07_web" />
+        <module name="Day0910_mybatis01" />
         <module name="Spring04_account_aoptx_anno" />
         <module name="Spring01" />
-        <module name="Spring01_jdbc" />
         <module name="Spring04_tx_anno" />
-        <module name="Day0916_spring01" />
         <module name="Spring03_proxy" />
         <module name="Day0917_spring08" />
-        <module name="Day0910_mybatis03" />
-        <module name="Spring01_factory" />
+        <module name="Day0916_spring04" />
+        <module name="Day0910_mybatis02" />
+        <module name="Spring02_anno_ioc" />
         <module name="mybatis03_cache" />
-        <module name="Spring03_adviceType" />
-        <module name="Day0917_spring09" />
         <module name="Mybatis02_datasourceAndTx" />
+        <module name="SpringMvc_day01_01_start" />
+        <module name="Day0917_spring09" />
+        <module name="Mybatis01" />
         <module name="Day0917_spring07" />
         <module name="Day0917_spring06" />
         <module name="Day0917_spring05" />
@@ -33,39 +35,40 @@
         <module name="Spring04_tx_xml" />
         <module name="Mybatis02_dynamicSQL" />
         <module name="Spring04_anno_tx_withoutxml" />
+        <module name="Spring02_account_xmlioc" />
         <module name="Spring01_DI" />
         <module name="Spring04_account_aoptx_xml" />
-        <module name="Spring02_anno_ioc" />
-        <module name="Mybatis01" />
-        <module name="Day0916_spring04" />
-        <module name="Day0916_spring03" />
-        <module name="Spring02_account_annoioc_withoutxml" />
         <module name="Spring03_account" />
-        <module name="Day0916_spring02" />
+        <module name="Spring03_adviceType" />
+        <module name="Spring01_jdbc" />
+        <module name="Spring02_account_annoioc_withoutxml" />
+        <module name="Day0916_spring01" />
         <module name="Day0909" />
-        <module name="Spring02_account_annoioc" />
-        <module name="Spring04_jdbctemplate" />
+        <module name="Spring01_factory" />
         <module name="Mybatis02_one2many" />
         <module name="Mybatis03_lazy" />
-        <module name="Spring02_account_xmlioc" />
+        <module name="Spring02_account_annoioc" />
         <module name="Day0903" />
         <module name="Day0902" />
         <module name="Spring03_springAOP" />
         <module name="Spring01_bean" />
-        <module name="Spring04_tx" />
         <module name="Spring04_jdk" />
+        <module name="Spring04_tx" />
+        <module name="Spring04_jdbctemplate" />
         <module name="Mybatis02_many2many" />
         <module name="Mybatis02_CRUD" />
         <module name="Day0904" />
+        <module name="Day0910_mybatis03" />
+        <module name="Day0916_spring02" />
         <module name="Mybatis02_DAO" />
-        <module name="Day0910_mybatis02" />
-        <module name="Day0910_mybatis01" />
         <module name="mybatis03_annotation" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Day0909" target="1.7" />
       <module name="Spring0916_spring03" target="1.8" />
+      <module name="SpringMVC_day01_01_start" target="1.7" />
+      <module name="SpringMvc_day02_01_response" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
