@@ -68,6 +68,8 @@
         <module>springmvc_day02_02_fileuploadServer</module>
         <module>springmvc_day02_03_exception</module>
         <module>springmvc_day02_04_interceptor</module>
+        <module>ssm</module>
+        <module>Day0919_spring12</module>
 
 
     </modules>
@@ -197,23 +199,22 @@
             <version>5.1.9.RELEASE</version>
         </dependency>
 
-        <!-- 日志实现 -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.7</version>
-        </dependency>
-        <!--commons logging-->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-jcl</artifactId>
-            <version>2.7</version>
-        </dependency>
         <!-- 日志框架(门面) -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.7</version>
+        </dependency>
+        <!-- log4j2 -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.7</version>
         </dependency>
         <!-- 日志桥接包   桥接包的版本须对应log4j2的版本 -->
         <dependency>
@@ -370,6 +371,13 @@
             <artifactId>druid</artifactId>
             <version>1.1.8</version>
         </dependency>
+        <!--commons-dbcp2 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+
         <!--mysql-->
         <dependency>
             <groupId>mysql</groupId>

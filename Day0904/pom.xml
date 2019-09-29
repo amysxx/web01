@@ -44,13 +44,7 @@
           <classifier>jdk15</classifier>
       </dependency>
 
-      <!-- JSP -->
-      <dependency>
-          <groupId>org.apache.tomcat</groupId>
-          <artifactId>tomcat-jsp-api</artifactId>
-          <scope>provided</scope>
-          <version>9.0.24</version>
-      </dependency>
+
 
       <!--jstl-->
       <dependency>
