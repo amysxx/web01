@@ -111,18 +111,24 @@
             <artifactId>spring-expression</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <!--解决高版本JDK中,程序包 javax.annotation 不可见,@Resource注解使用-->
+        <!--JSR250规范@Resource 解决高版本JDK中,程序包 javax.annotation 不可见,@Resource注解使用-->
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
             <version>${annotation.version}</version>
         </dependency>
+        <!-- JSR330规范@inject注解  javax.inject -->
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
+        <!--第三方代理cglib-->
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>${cglib.version}</version>
         </dependency>
-
 
 
         <!--单元测试-->

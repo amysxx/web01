@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.offcn.mybatis.dao.UserDao"><!-- 重要 -->
+	<!-- 公用sql片段 -->
+	<sql id="tblUserColumns">uid,uname,upass,uage</sql>
+	<!-- 结果集映射 -->
+	<resultMap id="userMap" type="UserEntity">
+		<!-- 字段与属性匹配 -->
+		<!-- 主键 -->
+		<id property="uid" column="uid"></id>
+		<!-- 非主键 -->
+		<result property="uname" column="uname"></result>
+		<result property="upass" column="upass"></result>
+		<result property="uage" column="uage"></result>
+	</resultMap>
+	<!-- insert 要求id名称与接口中的方法名称相同 -->
+	<insert id="insertUser" parameterType="UserEntity">
+		insert into
+		tbl_user(uid,uname,upass,uage)
+		values(#{uid},#{uname},#{upass},#{uage})
+	</insert>
+	<!-- update -->
+	<update id="updateUser" parameterType="UserEntity">
+		update tbl_user set
+		uname=#{uname},upass=#{upass},uage=#{uage} where
+		uid=#{uid}
+	</update>
+	<!-- delete -->
+	<delete id="delUser" parameterType="int">
+		delete from tbl_user where
+		uid=#{uid}
+	</delete>
+	<!-- query id resultType:设定返回值 -->
+	<select id="queryById" parameterType="int" resultMap="userMap">
+		SELECT
+		<include refid="tblUserColumns"></include>
+		from tbl_user where uid=#{uid}
+	</select>
+	<!-- query All -->
+	<select id="queryAll" resultMap="userMap">
+		SELECT
+		<include refid="tblUserColumns"></include>
+		from tbl_user
+	</select>
+	<!-- like -->
+	<select id="queryLikeOne" resultMap="userMap" parameterType="string">
+		SELECT
+		<include refid="tblUserColumns"></include>
+		from
+		tbl_user where uname like concat('%',#{uname},'%')
+	</select>
+	<!-- 根据用户名和密码查询 -->
+	<select id="queryMap" resultMap="userMap" parameterType="java.util.Map">
+		SELECT
+		<include refid="tblUserColumns"></include>
+		from tbl_user where uname=#{name} and upass=#{password}
+	</select>
+
+	<!-- if -->
+	<select id="queryAllIF" resultMap="userMap" parameterType="UserEntity">
+		SELECT
+		<include refid="tblUserColumns"></include>
+		from tbl_user where 1=1
+		<if test="uname!=null">
+			and uname = #{uname}
+		</if>
+		<if test="upass!=null">
+			and upass =#{upass}
+		</if>
+		<if test="uage!=null">
+			and uage= #{uage}
+		</if>
+	</select>
+	<!-- choose -->
+	<select id="queryAllChoose" resultMap="userMap" parameterType="UserEntity">
+		SELECT
+		<include refid="tblUserColumns"></include>
+		from tbl_user where 1=1
+		<choose>
+			<when test="uname!=null">
+				and uname = #{uname}
+			</when>
+			<when test="upass!=null">
+				and upass =#{upass}
+			</when>
+			<when test="uage!=null">
+				and uage= #{uage}
+			</when>
+			<otherwise>
+				order by uid desc
+			</otherwise>
+		</choose>
+	</select>
+	<!-- where -->
+	<select id="queryAllWhere" resultMap="userMap" parameterType="UserEntity">
+		SELECT
+		<include refid="tblUserColumns"></include>
+		from tbl_user
+		<where>
+			<if test="uname!=null">
+				uname = #{uname}
+			</if>
+			<if test="upass!=null">
+				and upass =#{upass}
+			</if>
+			<if test="uage!=null">
+				and uage= #{uage}
+			</if>
+		</where>
+	</select>
+	<!-- where -->
+	<select id="queryAllTrim" resultMap="userMap" parameterType="UserEntity">
+		SELECT
+		<include refid="tblUserColumns"></include>
+		from tbl_user
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="uname!=null">
+				uname = #{uname}
+			</if>
+			<if test="upass!=null">
+				and upass =#{upass}
+			</if>
+			<if test="uage!=null">
+				and uage= #{uage}
+			</if>
+		</trim>
+	</select>
+	<!-- set -->
+	<update id="updateUserSet" parameterType="UserEntity">
+		update tbl_user
+		<set>
+			<if test="uname!=null">
+				uname=#{uname},
+			</if>
+			<if test="upass!=null">
+				upass=#{upass},
+			</if>
+			<if test="uage!=null">
+				uage=#{uage}
+			</if>
+		</set>
+		where uid=#{uid}
+	</update>
+	<!-- delete foreach -->
+	<delete id="delForEach" parameterType="java.util.List">
+		DELETE from tbl_user where uid in
+		<foreach item="item" index="index" collection="list" open="("
+			separator="," close=")">
+			${item}
+		</foreach>
+	</delete>
+	<!-- insert foreach -->
+	<insert id="insertUserForEach" parameterType="java.util.List">
+		insert into tbl_user(uname,upass,uage) values
+		<foreach item="item" index="index" collection="list"
+			separator=",">
+			(#{item.uname},#{item.upass},#{item.uage})
+		</foreach>
+	</insert>
+</mapper>

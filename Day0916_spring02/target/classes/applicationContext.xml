@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- 日期-->
+    <bean id="date" class="java.util.Date"></bean>
+    <!--girl  setter注入
+    <bean id="beautifulGirl" class="com.offcn.spring.BeautifulGirl">
+        <property name="like" value="抽烟、喝酒、烫头"></property>
+        <property name="date" ref="date"></property>
+        <property name="age" value="25"/>
+    </bean>
+    -->
+    <!--构造方法注入 索引
+    <bean id="beautifulGirl" class="com.offcn.spring.BeautifulGirl">
+        <constructor-arg index="0" value="抽烟、喝酒、烫头"></constructor-arg>
+        <constructor-arg index="1" ref="date"></constructor-arg>
+        <constructor-arg index="2" value="26"></constructor-arg>
+    </bean>
+    -->
+    <!--构造方法注入 类型
+    <bean id="beautifulGirl" class="com.offcn.spring.BeautifulGirl">
+        <constructor-arg type="java.lang.String" value="抽烟、喝酒、烫头"></constructor-arg>
+        <constructor-arg type="java.util.Date" ref="date"></constructor-arg>
+        <constructor-arg type="int" value="26"></constructor-arg>
+    </bean>
+    -->
+
+
+    <bean id="bmw" class="com.offcn.spring.Car">
+        <property name="name" value="宝马720"/>
+    </bean>
+
+    <bean id="audi" class="com.offcn.spring.Car">
+        <property name="name" value="奥迪Q7"/>
+    </bean>
+
+    <!--boy-->
+    <bean id="boy" class="com.offcn.spring.Boy" p:age="30" p:girl-ref="girl"  init-method="init" destroy-method="destroy" scope="singleton">
+        <!--
+        <property name="girl" ref="beautifulGirl"></property>
+        -->
+        <property name="cars">
+            <array>
+                <ref bean="bmw"></ref>
+                <ref bean="audi"></ref>
+            </array>
+        </property>
+        <!--
+        <property name="age" value="26"/>
+        -->
+    </bean>
+
+    <!--构造方法注入 名称 -->
+    <bean id="girl" class="com.offcn.spring.BeautifulGirl">
+        <constructor-arg name="like" value="抽烟、喝酒、烫头"></constructor-arg>
+        <constructor-arg name="date" ref="date"></constructor-arg>
+        <constructor-arg name="age" value="26"></constructor-arg>
+    </bean>
+</beans>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.offcn.mybatis.entity">
+    <!-- 公用sql片段 -->
+    <sql id="tblUserColumns">uid,uname,upass,uage</sql>
+	<!-- insert -->
+	<insert id="insertUser">
+		insert into tbl_user values(4,'scott','tiger',25)
+	</insert>
+	<!-- insert with param -->
+	<insert id="insertUserWithParam" parameterType="UserEntity">
+		insert into
+		tbl_user(uid,uname,upass,uage)
+		values(#{uid},#{uname},#{upass},#{uage})
+	</insert>
+	<!-- update -->
+	<update id="updateUser" parameterType="UserEntity">
+		update tbl_user set
+		uname=#{uname},upass=#{upass},uage=#{uage} where
+		uid=#{uid}
+	</update>
+	<!-- delete -->
+	<delete id="delUser" parameterType="int">
+		delete from tbl_user where uid=#{uid}
+	</delete>
+	<!-- query id resultType:设定返回值 -->
+	<select id="queryById" parameterType="int" resultType="UserEntity">
+		SELECT <include refid="tblUserColumns"></include> from tbl_user where uid=#{uid}
+	</select>
+	<!-- query All -->
+	<select id="queryAll" resultType="UserEntity">
+		SELECT <include refid="tblUserColumns"></include> from tbl_user
+	</select>
+	<!-- like -->
+	<select id="queryLikeOne" resultType="UserEntity" parameterType="string">
+		SELECT <include refid="tblUserColumns"></include> from tbl_user where uname like '%${uname}%'
+	</select>
+	<!-- 根据用户名和密码查询 -->
+		<select id="queryMap" resultType="UserEntity" parameterType="Map">
+		SELECT <include refid="tblUserColumns"></include> from tbl_user where uname=#{name} and upass=#{password}
+	</select>
+</mapper>

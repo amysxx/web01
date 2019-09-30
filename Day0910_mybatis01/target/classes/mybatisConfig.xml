@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+	<!-- 设置实体类别名 -->
+		<typeAlias type="com.offcn.mybatis.entity.UserEntity" alias="UserEntity"></typeAlias>
+	</typeAliases>
+	<environments default="mysqlDB">
+		<!-- 配置一个数据库连接环境 -->
+		<environment id="mysqlDB">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<!-- url -->
+				<property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatis?useUnicode=true&amp;characterEncoding=utf8"></property>
+				<!-- name -->
+				<property name="username" value="root"></property>
+				<!-- password -->
+				<property name="password" value="root"></property>
+				<!-- driver class -->
+				<property name="driver" value="com.mysql.jdbc.Driver"></property>
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- load mapping file -->
+	<mappers>
+		<mapper resource="mapper/UserEntityMapper.xml"></mapper>
+	</mappers>
+</configuration>

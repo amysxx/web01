@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--***配置AOP***-->
+    <!--切面类-->
+    <bean id="userAspect" class="com.offcn.spring.aspect.UserAspect"/>
+    <aop:config>
+        <!--insert切入点-->
+        <aop:pointcut id="insertPointCut" expression="execution(* com.offcn.spring.service.*.insert(..))"/>
+        <!--insertException切入点-->
+        <aop:pointcut id="insertExceptionPointCut" expression="execution(* com.offcn.spring.service.*.insertException(..))"/>
+        <!--切面-->
+        <aop:aspect id="aopAspect" ref="userAspect">
+
+            <!--前置通知-->
+            <aop:before pointcut-ref="insertPointCut" method="validate"></aop:before>
+            <!--后置通知-->
+            <aop:after-returning pointcut-ref="insertPointCut" method="log"/>
+
+            <aop:after-returning pointcut="execution(* com.offcn.spring.service.*.update(..))" method="log"/>
+
+            <!--环绕通知-->
+            <aop:around method="aroundMethod" pointcut="execution(* com.offcn.spring.service.*.query(..))"></aop:around>
+
+
+            <!--异常通知-->
+            <aop:after-throwing method="showException"  pointcut-ref="insertExceptionPointCut"></aop:after-throwing>
+            <!--后置通知-->
+            <aop:after-returning pointcut-ref="insertExceptionPointCut" method="log"/>
+            <!--最终通知-->
+            <aop:after method="afterMethod" pointcut-ref="insertExceptionPointCut" ></aop:after>
+
+            <!--前置通知 获取参数-->
+            <aop:before pointcut="execution(* com.offcn.spring.service.*.insertParam(..)) and args(proNum,proName)" method="validateParam" ></aop:before>
+
+            <!--后置通知 获取返回值-->
+            <aop:after-returning pointcut="execution(* com.offcn.spring.service.*.queryDate(..))" returning="list" method="logDate"></aop:after-returning>
+        </aop:aspect>
+    </aop:config>
+
+    <!--dao-->
+    <bean id="uerDaoImpl" class="com.offcn.spring.dao.UerDaoImpl"></bean>
+    <!--service-->
+    <bean id="userServiceImpl" class="com.offcn.spring.service.UserServiceImpl">
+        <!--把dao注入到service-->
+        <property name="userDao" ref="uerDaoImpl"></property>
+    </bean>
+    <!--controler-->
+    <bean id="userController" class="com.offcn.spring.controller.UserController">
+        <property name="userService" ref="userServiceImpl"></property>
+    </bean>
+</beans>
