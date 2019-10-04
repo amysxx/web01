@@ -48,6 +48,7 @@
 
     <!--配置事务通知-->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!--配置事务属性-->
         <tx:attributes>
             <tx:method name="find*" read-only="true"/>
             <tx:method name="*" isolation="DEFAULT"/>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<!-- 设置实体类别名 -->
+		<typeAlias type="com.offcn.user.dao.entity.UserEntity" alias="UserEntity"></typeAlias>
+	</typeAliases>
+	<!-- 配置分页插件 -->
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+		<!-- 设置合理性分页 -->
+			<property name="reasonable" value="true"></property>
+		</plugin>
+	</plugins>
+
+</configuration>

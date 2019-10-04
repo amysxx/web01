@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--导入属性文件-->
+    <context:property-placeholder location="classpath:dbConfig.properties"></context:property-placeholder>
+    <!--配置数据源-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.name}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <!-- ******配置数据库连接池相关信息******* -->
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="5"/>
+        <property name="minIdle" value="2"/>
+        <property name="maxActive" value="10"/>
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="10000"/>
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+        <property name="testWhileIdle" value="true"/>
+        <!-- 这里建议配置为TRUE，防止取到的连接不可用 -->
+        <property name="testOnBorrow" value="true"/>
+        <property name="testOnReturn" value="false"/>
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize"
+                  value="20"/>
+        <!-- 这里配置提交方式，默认就是TRUE，可以不用配置 -->
+        <property name="defaultAutoCommit" value="true"/>
+        <!-- 验证连接有效与否的SQL，不同的数据配置不同 -->
+        <property name="validationQuery" value="select 1"/>
+    </bean>
+
+    <!--SqlSessionFactoty-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--加载数据源-->
+        <property name="dataSource" ref="dataSource"></property>
+        <!--加载mybatis的配置文件-->
+        <property name="configLocation" value="classpath:mybatisConfig.xml"></property>
+        <!--加载mybatis的映射文件-->
+        <property name="mapperLocations" value="classpath:mapper/*Mapper.xml"></property>
+    </bean>
+
+    <!--扫描dao层接口-->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--指定dao层接口位置-->
+        <property name="basePackage" value="com.offcn.user.dao"></property>
+        <!--指定SqlSessionFactory-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
+
+    <!--******配置事务******-->
+    <!--配置事务管理器-->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!--配置切入点表达式(业务层)-->
+    <aop:config>
+        <aop:advisor advice-ref="userAdvice" pointcut="execution(* com.offcn.user.service.UserServiceImpl.*(..))"></aop:advisor>
+    </aop:config>
+
+    <tx:advice id="userAdvice" transaction-manager="txManager">
+        <!--配置事务属性-->
+        <tx:attributes>
+            <!--配置具体方法使用具体事务属性-->
+            <tx:method name="insert*" propagation="REQUIRED" isolation="READ_COMMITTED" read-only="false" rollback-for="java.lang.Exception" timeout="-1"/>
+            <tx:method name="update*" propagation="REQUIRED" isolation="READ_COMMITTED" read-only="false" rollback-for="java.lang.Exception" timeout="-1"/>
+            <tx:method name="delete*" propagation="REQUIRED" isolation="READ_COMMITTED" read-only="false" rollback-for="java.lang.Exception" timeout="-1"/>
+            <tx:method name="query*" propagation="NOT_SUPPORTED" isolation="READ_COMMITTED" read-only="false" rollback-for="java.lang.Exception" timeout="-1"/>
+            <tx:method name="*" propagation="REQUIRED" isolation="READ_COMMITTED" read-only="false" rollback-for="java.lang.Exception" timeout="-1"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--配置业务层-->
+    <bean id="userServiceImpl" class="com.offcn.user.service.UserServiceImpl">
+        <!--注入dao对象-->
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+
+</beans>

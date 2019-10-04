@@ -5,6 +5,7 @@ import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 /**
  * 模拟一个消费者
@@ -54,14 +55,15 @@ public class Client {
                 Object returnValue = null;
 
                 //1.获取方法执行的参数
-                Float money = (Float)args[0];
+                Float money = (Float)args[1];
+                System.out.println (Arrays.toString (args ) );
                 //2.判断当前方法是不是销售
                 if("saleProduct".equals(method.getName())) {
-                    returnValue = method.invoke(producer, money*0.8f);
+                    returnValue = method.invoke(producer, 100,money*0.8f);
                 }
                 return returnValue;
             }
         });
-        cglibProducer.saleProduct(12000f);
+        cglibProducer.saleProduct(12000f,120000f);
     }
 }

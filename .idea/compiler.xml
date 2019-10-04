@@ -7,77 +7,92 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Mybatis02_jndi" />
-        <module name="Spring03_account" />
-        <module name="SpringMvc_day02_01_response" />
+        <module name="Spring03_annotationAOP" />
+        <module name="Spring04_account_tx" />
+        <module name="test04" />
         <module name="Spring04_account_aoptx_anno" />
-        <module name="Mybatis02_DAO" />
-        <module name="Day0910_mybatis03" />
-        <module name="Spring01" />
-        <module name="Spring01_spring" />
-        <module name="springmvc_day02_03_exception" />
-        <module name="Spring03_proxy" />
-        <module name="Day0917_spring08" />
-        <module name="Day0916_spring04" />
-        <module name="Spring01_factory" />
+        <module name="Spring04_jdbctemplate" />
+        <module name="Spring02_account_annoioc_withoutxml" />
+        <module name="Day0909" />
+        <module name="Mybatis03_lazy" />
+        <module name="SpringMvc_day02_02_fileupload" />
+        <module name="Day0904" />
+        <module name="Day0903" />
+        <module name="mybatis03_annotation" />
+        <module name="Day0917_spring07_web" />
+        <module name="Spring04_tx" />
+        <module name="Day1001_servlet3" />
+        <module name="Mybatis02_jndi" />
+        <module name="Spring03_springAOP" />
+        <module name="Mybatis02_one2many" />
+        <module name="Spring03_account" />
+        <module name="Mybatis01" />
+        <module name="Mybatis02_CRUD" />
         <module name="Spring02_anno_ioc" />
+        <module name="Mybatis02_dynamicSQL" />
+        <module name="Spring03_proxy" />
+        <module name="Spring01_bean" />
+        <module name="ssm" />
+        <module name="Day0919_spring12" />
+        <module name="springmvc_day02_02_fileuploadServer" />
+        <module name="Spring04_jdk" />
+        <module name="Spring01_jdbc" />
+        <module name="Spring02_account_xmlioc" />
+        <module name="Day1001" />
+        <module name="SpringMvc_day02_02_fileuploadServer" />
+        <module name="Spring03_adviceType" />
+        <module name="springmvc_day02_03_exception" />
+        <module name="Day0902" />
+        <module name="Spring04_tx_xml" />
+        <module name="Spring01" />
+        <module name="SpringMvc_day02_01_response" />
+        <module name="Day0916_spring04" />
+        <module name="Day0916_spring03" />
         <module name="mybatis03_cache" />
-        <module name="Spring04_tx_anno" />
-        <module name="SpringMvc_day01_01_start" />
-        <module name="Day0917_spring09" />
+        <module name="Day0916_spring01" />
+        <module name="Spring01_spring" />
+        <module name="Spring04_account_aoptx_xml" />
+        <module name="Day1001_springmvcAnnotation" />
+        <module name="Spring04_anno_tx_withoutxml" />
+        <module name="Spring01_factory" />
+        <module name="Mybatis02_DAO" />
+        <module name="Day1001_servlet30" />
+        <module name="springmvc_day02_04_interceptor" />
+        <module name="mybatis03_annoOne2Many" />
+        <module name="Spring02_account_annoioc" />
+        <module name="Day0916_spring02" />
+        <module name="Mybatis02_many2many" />
         <module name="Mybatis02_datasourceAndTx" />
+        <module name="Day0909_mybatis" />
+        <module name="JVM" />
+        <module name="SpringMvc_day01_01_start" />
+        <module name="Spring01_DI" />
+        <module name="Day0910_mybatis03" />
+        <module name="Day0910_mybatis02" />
+        <module name="Day0910_mybatis01" />
+        <module name="Spring04_tx_anno" />
+        <module name="Day0917_spring09" />
+        <module name="Day0917_spring08" />
         <module name="Day0917_spring07" />
         <module name="Day0917_spring06" />
         <module name="Day0917_spring05" />
-        <module name="mybatis03_annoOne2Many" />
-        <module name="Spring04_account_tx" />
-        <module name="springmvc_day02_02_fileuploadServer" />
-        <module name="springmvc_day02_04_interceptor" />
-        <module name="Spring03_annotationAOP" />
-        <module name="Day0917_spring07_web" />
-        <module name="Mybatis02_dynamicSQL" />
-        <module name="Day0910_mybatis02" />
-        <module name="Spring04_anno_tx_withoutxml" />
-        <module name="SpringMvc_day02_02_fileuploadServer" />
-        <module name="ssm" />
-        <module name="Day0909_mybatis" />
-        <module name="Spring02_account_xmlioc" />
-        <module name="Spring01_DI" />
-        <module name="Spring04_account_aoptx_xml" />
-        <module name="Mybatis01" />
-        <module name="SpringMvc_day02_02_fileupload" />
-        <module name="Spring03_adviceType" />
-        <module name="Day0916_spring03" />
-        <module name="Spring02_account_annoioc_withoutxml" />
-        <module name="Day0916_spring01" />
-        <module name="Day0916_spring02" />
-        <module name="Day0909" />
-        <module name="Spring04_tx_xml" />
-        <module name="Mybatis02_one2many" />
-        <module name="Mybatis03_lazy" />
-        <module name="Day0919_spring12" />
-        <module name="Day0903" />
-        <module name="Day0902" />
-        <module name="Spring03_springAOP" />
-        <module name="Spring01_bean" />
-        <module name="Spring04_jdk" />
-        <module name="Spring04_tx" />
-        <module name="Spring04_jdbctemplate" />
-        <module name="Spring02_account_annoioc" />
-        <module name="Mybatis02_CRUD" />
-        <module name="Day0904" />
-        <module name="Spring01_jdbc" />
-        <module name="Mybatis02_many2many" />
-        <module name="Day0910_mybatis01" />
-        <module name="mybatis03_annotation" />
+        <module name="test" />
+        <module name="Day0920_spring13" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Day0909" target="1.7" />
+      <module name="Day1001" target="1.7" />
+      <module name="Day1001_servlet3.0" target="1.5" />
+      <module name="Day1001_servlet30" target="1.7" />
       <module name="Spring0916_spring03" target="1.8" />
       <module name="SpringMVC_day01_01_start" target="1.7" />
       <module name="springmvc_day02_02_fileuploadserver" target="1.7" />
       <module name="SpringMvc_day02_02_fileuploadServer" target="1.8" />
+      <module name="test" target="1.8" />
+      <module name="test02" target="1.8" />
+      <module name="test04" target="1.8" />
+      <module name="test3" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

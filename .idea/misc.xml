@@ -16,9 +16,10 @@
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/Day0909/pom.xml" />
-        <option value="$PROJECT_DIR$/Spring0916_spring03/pom.xml" />
-        <option value="$PROJECT_DIR$/SpringMvc_day02_02_fileuploadServer/pom.xml" />
+        <option value="$PROJECT_DIR$/test/pom.xml" />
+        <option value="$PROJECT_DIR$/test02/pom.xml" />
+        <option value="$PROJECT_DIR$/test04/pom.xml" />
+        <option value="$PROJECT_DIR$/test3/pom.xml" />
       </set>
     </option>
   </component>

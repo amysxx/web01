@@ -70,8 +70,10 @@
         <module>springmvc_day02_04_interceptor</module>
         <module>ssm</module>
         <module>Day0919_spring12</module>
-
-
+        <module>Day1001_servlet3</module>
+        <module>Day1001_springmvcAnnotation</module>
+        <module>JVM</module>
+        <module>Day0920_spring13</module>
     </modules>
     <packaging>pom</packaging>
 
